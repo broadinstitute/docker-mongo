@@ -70,7 +70,7 @@ do
   build_docker=${FORCE_BUILD}
 
   # Pull version from upstream repo
-  docker pull ${reop}:${version}
+  docker pull ${repo}:${version}
   retcode=$?
 
   # if tag does not exist set build to true
@@ -122,11 +122,11 @@ do
      errorout $retcode "Build successful but could not tag it as latest"
 
      echo "Pushing images to dockerhub"
-     echo docker push -f ${repo}:${version}_${BUILD_NUMBER} 
+     docker push -f ${repo}:${version}_${BUILD_NUMBER} 
      retcode=$?
      errorout $retcode "Pushing new image to docker hub"
 
-     echo docker push -f ${repo}:${version}
+     docker push -f ${repo}:${version}
      retcode=$?
      errorout $retcode "Pushing version tag image to docker hub"
 
@@ -134,10 +134,10 @@ do
 
      cleancode=0
      echo "Cleaning up pulled and built images"
-     echo docker rmi ${repo}:${version}_${BUILD_NUMBER}
+     docker rmi ${repo}:${version}_${BUILD_NUMBER}
      retcode=$?
      cleancode=$(($cleancode + $retcode))
-     echo docker rmi ${repo}:${version}
+     docker rmi ${repo}:${version}
      retcode=$?
      cleancode=$(($cleancode + $retcode))
      errorout $cleancode "Some images were not able to be cleaned up"
