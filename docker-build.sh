@@ -1,6 +1,6 @@
 #!/bin/bash
 # set -ex
-set -x
+# set -x
 
 # build script to build elasticsearch docker images
 
