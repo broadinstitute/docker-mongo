@@ -122,11 +122,11 @@ do
      errorout $retcode "Build successful but could not tag it as latest"
 
      echo "Pushing images to dockerhub"
-     docker push -f ${repo}:${version}_${BUILD_NUMBER} 
+     docker push ${repo}:${version}_${BUILD_NUMBER} 
      retcode=$?
      errorout $retcode "Pushing new image to docker hub"
 
-     docker push -f ${repo}:${version}
+     docker push  ${repo}:${version}
      retcode=$?
      errorout $retcode "Pushing version tag image to docker hub"
 
