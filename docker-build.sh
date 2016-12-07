@@ -11,7 +11,7 @@
 BUILD_VERS=""
 config_file="build-list.cfg"
 config_ok=0
-repo="broadinsitute/mongo"
+repo="broadinstitute/mongo"
 
 # flag to determine if new docker image should be built
 build_docker=0
